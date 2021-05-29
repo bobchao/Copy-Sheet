@@ -4,6 +4,7 @@ var sSortingColumn = 16; //I need to sort the source sheet before sync the data 
 var baseTime = new Date("2021-05-04"); //first update. 
 var sheetNameTemplate = `本期次序 (下次更新: ${getNextUpdateDateString()})`;
 var updateNoticeTemplate = `待辦事項參考順序\n（${Utilities.formatDate(new Date(), "GMT+8", "MM-dd")}更新）`;
+var updateNoticeCell = "A3";
 
 function main(){
   var targetSheet = getSheetById(targetSheetId);
@@ -50,7 +51,7 @@ function main(){
     )
 
     //change the update time and sheet name of the targetSheet
-    targetSheet.getRange("A3").setValue(updateNoticeTemplate);
+    targetSheet.getRange(updateNoticeCell).setValue(updateNoticeTemplate);
     targetSheet.setName(sheetNameTemplate);
   }
 
